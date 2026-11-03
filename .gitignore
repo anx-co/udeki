@@ -1,0 +1,4 @@
+# Ignorar elementos específicos de reporte_web
+/reporte_web/datos/
+/reporte_web/info.txt
+/reporte_web/notas_web.py
