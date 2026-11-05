@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AndreX</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Devonshire&display=swap" rel="stylesheet">
+<style>
+:root{
+  --red:#ff1e1e;
+  --font:"Devonshire", cursive;
+}
+
+*{ margin:0; padding:0; box-sizing:border-box; }
+html,body{ height:100%; }
+
+body{
+  background:#000;
+  color:#fff;
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+  font-family:var(--font);
+  text-rendering:optimizeSpeed;
+}
+
+body::before{
+  content:"";
+  position:fixed; inset:0; pointer-events:none; z-index:8;
+  background:
+    radial-gradient(ellipse at 50% 50%, rgba(255,0,0,.10), rgba(0,0,0,.88) 68%),
+    repeating-linear-gradient(0deg, rgba(255,255,255,.03) 0 1px, transparent 1px 3px);
+}
+
+.stage{ position:relative; display:grid; place-items:center; contain:layout style; }
+
+.flash{
+  position:absolute;
+  width:min(140vw,1600px);
+  aspect-ratio:2/1;
+  background:radial-gradient(ellipse at center,
+      rgba(255,60,60,.85),
+      rgba(255,0,0,.22) 45%,
+      transparent 72%);
+  filter:blur(14px);
+  opacity:.10;
+  pointer-events:none;
+  transform:translateZ(0);
+  will-change:transform,opacity;
+}
+
+.wrap{ position:relative; padding:80px 110px; contain:layout style; }
+
+/* ---------- rayos curvos de fondo ---------- */
+.rays{
+  position:absolute;
+  inset:-30% -22%;
+  width:auto; height:auto;
+  overflow:visible;
+  pointer-events:none;
+  z-index:0;
+  opacity:.32;
+  transition:opacity .45s ease;
+  transform:translateZ(0);
+}
+.wrap.hot .rays{ opacity:.95; }
+
+.rays .g-r{ filter:drop-shadow(0 0 8px rgba(255,0,0,.9)); }
+.rays .g-w{ filter:drop-shadow(0 0 7px rgba(255,255,255,.85)); }
+
+.rays path{
+  fill:none;
+  stroke:var(--red);
+  stroke-width:2;
+  stroke-linecap:round;
+  vector-effect:non-scaling-stroke;
+  stroke-dasharray:170 1800;
+  opacity:0;
+  animation:raySweep var(--d,3s) linear var(--dl,0s) infinite;
+}
+.rays .g-w path{ stroke:#fff; stroke-width:1.4; }
+
+@keyframes raySweep{
+  0%{ stroke-dashoffset:1800; opacity:0; }
+  8%{ opacity:.95; }
+  55%{ opacity:.75; }
+  92%{ opacity:0; }
+  100%{ stroke-dashoffset:-1800; opacity:0; }
+}
+
+/* ---------- palabra ---------- */
+.word{
+  position:relative;
+  z-index:2;
+  display:flex;
+  align-items:baseline;
+  justify-content:center;
+  font-family:var(--font);
+  font-weight:400;
+  font-size:clamp(80px,19vw,250px);
+  line-height:1;
+  transform-origin:50% 55%;
+  backface-visibility:hidden;
+  will-change:transform;
+}
+
+.ltr{
+  position:relative;
+  z-index:2;
+  display:inline-block;
+  color:#fff;
+  text-shadow:0 0 16px rgba(255,0,0,.85), 0 10px 30px rgba(0,0,0,.9);
+  transform:translateZ(0);
+  backface-visibility:hidden;
+  will-change:transform,opacity;
+}
+
+.slot{
+  position:relative;
+  display:inline-block;
+  max-width:0;
+  overflow:visible;
+}
+.slot .ltr{ opacity:0; }
+
+/* ---------- trazos del marco (detrás de las letras) ---------- */
+.strokes{
+  position:absolute;
+  inset:-80px -110px;
+  width:auto; height:auto;
+  overflow:visible;
+  pointer-events:none;
+  z-index:0;
+}
+.strokes .g-r{ filter:drop-shadow(0 0 6px rgba(255,0,0,.9)); }
+.strokes .g-w{ filter:drop-shadow(0 0 6px rgba(255,255,255,.8)); }
+
+.strokes path{
+  fill:none;
+  stroke:var(--red);
+  stroke-width:2.2;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  vector-effect:non-scaling-stroke;
+  opacity:0;
+}
+.strokes .g-w path{ stroke:#fff; }
+.strokes .thin path,
+.strokes path.thin{ stroke-width:1.3; }
+
+/* ---------- keyframes ---------- */
+@keyframes letterIn{
+  0%{
+    opacity:0;
+    transform:translate3d(0,-70px,0) scale(2.1) rotate(-8deg);
+    color:var(--red);
+  }
+  55%{
+    opacity:1;
+    transform:translate3d(0,6px,0) scale(1.07) rotate(2deg);
+    color:#fff;
+  }
+  100%{
+    opacity:1;
+    transform:translate3d(0,0,0) scale(1) rotate(0);
+    color:#fff;
+  }
+}
+
+@keyframes letterOut{
+  0%{ opacity:1; transform:translate3d(0,0,0); color:#fff; }
+  22%{ opacity:1; transform:translate3d(0,-6px,0) scale(1.15); color:var(--red); }
+  100%{ opacity:0; transform:translate3d(0,-90px,0) scale(.5) rotate(12deg); color:var(--red); }
+}
+
+@keyframes slotOpen{ from{ max-width:0; } to{ max-width:.85em; } }
+@keyframes slotClose{ from{ max-width:.85em; } to{ max-width:0; } }
+
+@keyframes drawIn{ to{ stroke-dashoffset:0; } }
+
+@keyframes coreArm{
+  0%{ transform:scale(1); color:#fff; }
+  40%{ transform:scale(1.12); color:var(--red); }
+  100%{ transform:scale(1); color:#fff; }
+}
+
+@keyframes coreShake{
+  0%{ transform:translate3d(0,0,0); }
+  15%{ transform:translate3d(-7px,2px,0) rotate(-3deg); }
+  32%{ transform:translate3d(7px,-2px,0) rotate(3deg); }
+  48%{ transform:translate3d(-5px,1px,0) rotate(-2deg); }
+  66%{ transform:translate3d(4px,1px,0) rotate(1deg); }
+  100%{ transform:translate3d(0,0,0); }
+}
+
+@keyframes doublePulse{
+  0%{ transform:scale(1); }
+  7%{ transform:scale(1.15); }
+  19%{ transform:scale(1); }
+  46%{ transform:scale(1); }
+  53%{ transform:scale(1.15); }
+  65%{ transform:scale(1); }
+  100%{ transform:scale(1); }
+}
+
+@keyframes flashPulse{
+  0%{ opacity:.10; transform:scale(1); }
+  7%{ opacity:.85; transform:scale(1.25); }
+  19%{ opacity:.14; transform:scale(1); }
+  46%{ opacity:.10; transform:scale(1); }
+  53%{ opacity:.85; transform:scale(1.25); }
+  65%{ opacity:.14; transform:scale(1); }
+  100%{ opacity:.10; transform:scale(1); }
+}
+</style>
+</head>
+<body>
+
+<div class="stage">
+  <div class="flash" id="flash"></div>
+
+  <div class="wrap" id="wrap">
+
+    <svg class="rays" viewBox="0 0 1200 700" preserveAspectRatio="none">
+      <g class="g-r">
+        <path d="M -150 520 C 200 120, 600 640, 1350 180" style="--d:3.4s;--dl:0s"/>
+        <path d="M -150 220 C 300 620, 700 60, 1350 520" style="--d:4.1s;--dl:.6s"/>
+        <path d="M 150 800 C 350 300, 800 560, 1150 -100" style="--d:3.8s;--dl:1.2s"/>
+        <path d="M 1150 800 C 900 300, 500 560, 100 -100" style="--d:4.6s;--dl:.3s"/>
+        <path d="M 400 -100 C 500 300, 700 450, 900 800" style="--d:3.1s;--dl:.9s"/>
+        <path d="M 100 -100 C 250 250, 900 350, 1250 750" style="--d:3.6s;--dl:1.5s"/>
+        <path d="M 1250 640 C 850 620, 350 220, -150 300" style="--d:4.2s;--dl:2.6s"/>
+      </g>
+      <g class="g-w">
+        <path d="M -150 380 C 250 330, 800 420, 1350 340" style="--d:5s;--dl:1.7s"/>
+        <path d="M -100 650 C 400 500, 800 700, 1300 400" style="--d:4.4s;--dl:2.1s"/>
+        <path d="M -150 470 C 350 250, 750 480, 1300 250" style="--d:4.9s;--dl:.4s"/>
+      </g>
+    </svg>
+
+    <div class="word" id="word">
+
+      <svg class="strokes" viewBox="0 0 1000 400" preserveAspectRatio="none">
+
+        <!-- marco base -->
+        <g class="g-r">
+          <path d="M 40 130 L 40 50 L 210 50"/>
+          <path d="M 790 50 L 960 50 L 960 130"/>
+          <path d="M 40 270 L 40 392 L 210 392"/>
+          <path d="M 790 392 L 960 392 L 960 270"/>
+          <path d="M 20 320 L 110 90"/>
+          <path d="M 890 90 L 980 320"/>
+          <path d="M 250 90 Q 500 20 750 90"/>
+          <path d="M 250 372 Q 500 442 750 372"/>
+        </g>
+        <g class="g-w">
+          <path d="M 330 36 L 670 36"/>
+          <path d="M 330 392 L 670 392"/>
+          <path d="M 130 200 L 200 200"/>
+          <path d="M 800 200 L 870 200"/>
+        </g>
+
+        <!-- detalles creativos -->
+        <g class="g-r thin">
+          <path d="M 140 356 C 66 352 28 306 54 274 C 76 248 116 270 104 304"/>
+          <path d="M 862 56 C 936 60 974 104 948 136 C 926 162 886 140 898 106"/>
+          <path d="M 96 172 C 70 158 66 122 92 112"/>
+          <path d="M 906 258 C 934 272 936 308 910 320"/>
+          <path d="M 176 62 q 34 -34 68 -20"/>
+          <path d="M 756 374 q 34 34 68 20"/>
+          <path d="M 300 66 L 316 50 M 316 66 L 300 50"/>
+          <path d="M 690 382 L 706 366 M 706 382 L 690 366"/>
+          <path d="M 236 376 L 250 390 M 250 376 L 236 390"/>
+          <path d="M 752 48 L 766 62 M 766 48 L 752 62"/>
+          <path d="M 500 62 L 514 76 L 500 90 L 486 76 Z"/>
+          <path d="M 500 344 L 514 358 L 500 372 L 486 358 Z"/>
+          <path d="M 64 232 L 78 232 M 64 246 L 78 246 M 64 260 L 78 260"/>
+          <path d="M 936 140 L 950 140 M 936 154 L 950 154 M 936 168 L 950 168"/>
+          <path d="M 116 92 a 9 9 0 1 0 18 0 a 9 9 0 1 0 -18 0"/>
+          <path d="M 874 300 a 9 9 0 1 0 18 0 a 9 9 0 1 0 -18 0"/>
+          <path d="M 402 380 a 5 5 0 1 0 10 0 a 5 5 0 1 0 -10 0"/>
+          <path d="M 596 44 a 5 5 0 1 0 10 0 a 5 5 0 1 0 -10 0"/>
+        </g>
+
+        <g class="g-w thin">
+          <path d="M 150 236 q 16 14 32 0"/>
+          <path d="M 818 168 q 16 -14 32 0"/>
+          <path d="M 196 300 L 208 288"/>
+          <path d="M 800 100 L 812 88"/>
+          <path d="M 336 376 a 6 6 0 1 0 12 0 a 6 6 0 1 0 -12 0"/>
+          <path d="M 654 50 a 6 6 0 1 0 12 0 a 6 6 0 1 0 -12 0"/>
+          <path d="M 470 380 L 480 390 L 490 380"/>
+          <path d="M 510 52 L 520 42 L 530 52"/>
+          <path d="M 244 118 L 244 138"/>
+          <path d="M 756 264 L 756 284"/>
+        </g>
+
+      </svg>
+
+      <span class="ltr" id="lA">A</span>
+      <span class="slot" id="sn"><span class="ltr" id="ln">n</span></span>
+      <span class="slot" id="sd"><span class="ltr" id="ld">d</span></span>
+      <span class="slot" id="sr"><span class="ltr" id="lr">r</span></span>
+      <span class="slot" id="se"><span class="ltr" id="le">e</span></span>
+      <span class="ltr" id="lX">X</span>
+
+    </div>
+  </div>
+</div>
+
+<script>
+const q = s => document.querySelector(s);
+
+const word  = q('#word');
+const wrap  = q('#wrap');
+const flash = q('#flash');
+const A = q('#lA');
+const X = q('#lX');
+const mids = [
+  { slot:q('#sn'), ltr:q('#ln') },
+  { slot:q('#sd'), ltr:q('#ld') },
+  { slot:q('#sr'), ltr:q('#lr') },
+  { slot:q('#se'), ltr:q('#le') }
+];
+const paths = [...document.querySelectorAll('.strokes path')];
+
+paths.forEach(p => {
+  const len = p.getTotalLength();
+  p.style.strokeDasharray  = len;
+  p.style.strokeDashoffset = len;
+});
+
+let timers = [];
+let firstRun = true;
+const at = (t, fn) => timers.push(setTimeout(fn, t));
+const clearTimers = () => { timers.forEach(clearTimeout); timers = []; };
+
+function anim(el, name, dur, delay = 0, fill = 'both'){
+  el.style.animation = 'none';
+  getComputedStyle(el).animationName;
+  el.style.animation =
+    `${name} ${dur}ms cubic-bezier(.2,.85,.25,1) ${delay}ms ${fill}`;
+}
+
+function drawStrokes(){
+  paths.forEach((p, i) => {
+    p.style.opacity = 1;
+    anim(p, 'drawIn', 600, i * 45, 'forwards');
+  });
+}
+
+function retractStrokes(){
+  paths.forEach((p, i) => {
+    setTimeout(() => {
+      p.style.animation = 'none';
+      p.style.strokeDashoffset = 0;
+      p.style.transition = 'stroke-dashoffset .45s ease-in, opacity .45s ease-in';
+      p.style.strokeDashoffset = p.getTotalLength();
+      p.style.opacity = 0;
+    }, i * 30);
+  });
+}
+
+function cycle(){
+  clearTimers();
+  wrap.classList.remove('hot');
+
+  mids.forEach(m => {
+    m.slot.style.animation = 'none';
+    m.ltr.style.animation  = 'none';
+    m.ltr.style.opacity    = '';
+  });
+  paths.forEach(p => {
+    p.style.animation  = 'none';
+    p.style.transition = 'none';
+    p.style.strokeDashoffset = p.getTotalLength();
+    p.style.opacity = 0;
+  });
+  word.style.animation  = 'none';
+  flash.style.animation = 'none';
+  A.style.animation = 'none';
+  X.style.animation = 'none';
+
+  if (firstRun){
+    anim(A, 'letterIn', 560, 0);
+    anim(X, 'letterIn', 560, 150);
+    firstRun = false;
+  } else {
+    anim(A, 'coreArm', 260, 0);
+    anim(X, 'coreArm', 260, 60);
+  }
+
+  const midT = [760, 970, 1180, 1390];
+  mids.forEach((m, i) => {
+    at(midT[i], () => {
+      anim(m.slot, 'slotOpen', 380, 0, 'forwards');
+      anim(m.ltr,  'letterIn', 500, 0);
+    });
+  });
+
+  at(1860, () => { wrap.classList.add('hot'); drawStrokes(); });
+  at(2020, () => {
+    anim(word,  'doublePulse', 3000, 0, 'forwards');
+    anim(flash, 'flashPulse',  3000, 0, 'forwards');
+  });
+
+  const outAt = 2020 + 3000 + 280;
+  at(outAt, () => {
+    [...mids].reverse().forEach((m, i) => {
+      at(i * 80, () => {
+        anim(m.ltr,  'letterOut', 400, 0);
+        anim(m.slot, 'slotClose', 400, 0, 'forwards');
+      });
+    });
+    anim(A, 'coreShake', 520, 0);
+    anim(X, 'coreShake', 520, 60);
+    retractStrokes();
+    wrap.classList.remove('hot');
+  });
+
+  at(outAt + 800 + 1000, cycle);
+}
+
+cycle();
+</script>
+
+</body>
+</html>
