@@ -1,3 +1,3 @@
 git add .
-git commit -m "Actualizar configuración y estructura de la web"
+git commit -m "Actualizacion de datos"
 git push origin main
