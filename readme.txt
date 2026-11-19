@@ -1,3 +1,3 @@
 git add .
-git commit -m "Actualizacion de datos"
+git commit -m "Dia 19 de noviembre con iconos"
 git push origin main
