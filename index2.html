@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>IE Jorge Eliécer Gaitán de Orito</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0a1f44;--navy2:#13306b;--gold:#e0a82e;--gold2:#f3c75c;--red:#b3202f;--bg:#eef1f6;--card:#fff;--ink:#101a30;--mut:#55607a;--line:#d5dbe8;--h:"Archivo",Arial,sans-serif;--b:"Manrope",system-ui,sans-serif;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#070f22;--card:#0e1a38;--ink:#eef1f8;--mut:#a7b1c8;--line:#24335a;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#070f22;--card:#0e1a38;--ink:#eef1f8;--mut:#a7b1c8;--line:#24335a;color-scheme:dark}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.65 var(--b)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--navy);z-index:60}
+a{color:inherit;text-decoration:none}
+#prog{position:fixed;top:env(safe-area-inset-top,0px);left:0;height:4px;width:0;background:var(--gold);z-index:70}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--navy);color:#fff;border-bottom:4px solid var(--gold);box-shadow:0 6px 20px #0006}
+.top{display:flex;align-items:center;gap:14px;padding:10px 22px;max-width:1280px;margin:auto}
+.logo{width:50px;height:50px;border-radius:8px;background:var(--gold);color:var(--navy);display:grid;place-items:center;font:900 1rem var(--h);overflow:hidden;flex:none}
+.logo img{width:100%;height:100%;object-fit:contain}
+.brand{font:800 1.15rem/1.1 var(--h);text-transform:uppercase;letter-spacing:.5px}.brand small{display:block;font:600 .68rem var(--b);letter-spacing:2px;color:var(--gold2);margin-top:3px}
+.right{margin-left:auto;display:flex;align-items:center;gap:12px}
+.clock{text-align:right;background:var(--navy2);border-radius:8px;padding:5px 13px;border:1px solid #ffffff2a}
+.clock b{display:block;font:800 1.2rem/1 var(--h);color:var(--gold2);font-variant-numeric:tabular-nums}.clock small{font-size:.64rem;opacity:.85}
+.fb{background:#1877f2;border-radius:8px;padding:8px 14px;font-weight:700;font-size:.82rem}
+nav{display:flex;gap:0;overflow-x:auto;max-width:1280px;margin:auto;padding:0 12px;scrollbar-width:none;align-items:stretch}
+nav a{white-space:nowrap;padding:12px 15px;font:700 .8rem var(--h);text-transform:uppercase;letter-spacing:1px;color:#cfd8ee;border-top:3px solid transparent;transition:.25s}
+nav a:hover,nav a.on{background:var(--navy2);color:#fff;border-top-color:var(--gold)}
+nav a.notes{margin-left:auto;background:var(--gold);color:var(--navy);border-radius:6px 6px 0 0;border-top:3px solid var(--gold2);animation:pulse 2.6s infinite}
+nav a.notes:hover{background:var(--gold2)}
+@keyframes pulse{0%{box-shadow:0 0 0 0 #e0a82e99}70%,100%{box-shadow:0 0 0 12px #e0a82e00}}
+main{max-width:1280px;margin:auto;padding:0 20px 70px}
+.page{display:none}.page.on{display:block}
+.rv{opacity:0;transform:translateY(30px);transition:opacity .7s,transform .7s;transition-delay:var(--d,0s)}.rv.in{opacity:1;transform:none}
+.band{position:relative;overflow:hidden;margin:22px 0 28px;border-radius:10px;padding:clamp(34px,6vw,64px) clamp(22px,5vw,56px);background:linear-gradient(120deg,var(--navy),var(--navy2));color:#fff;border-left:10px solid var(--gold)}
+.band::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(135deg,#ffffff0a 0 2px,transparent 2px 22px);animation:slide 18s linear infinite}
+@keyframes slide{to{background-position:220px 0}}
+.band>*{position:relative;z-index:1}.band .k{font:800 .78rem var(--h);letter-spacing:3px;color:var(--gold2);text-transform:uppercase}
+.band h1,.band h2{font:900 clamp(2rem,5.2vw,3.8rem)/1.05 var(--h);text-transform:uppercase;margin:8px 0 10px;letter-spacing:-.5px}.band p{max-width:640px;color:#d3dbee;margin:0}
+.btn{display:inline-block;margin:18px 10px 0 0;padding:12px 24px;border-radius:6px;font:800 .82rem var(--h);letter-spacing:1px;text-transform:uppercase;background:var(--gold);color:var(--navy);transition:.25s;border:2px solid var(--gold)}
+.btn:hover{transform:translateY(-3px);box-shadow:0 10px 24px #0004}.btn.g{background:transparent;color:#fff;border-color:#fff8}.btn.d{background:var(--navy);border-color:var(--navy);color:#fff}
+h3.t{font:800 1.5rem var(--h);text-transform:uppercase;margin:38px 0 16px;padding-left:14px;border-left:6px solid var(--gold);letter-spacing:.3px}
+.grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-top:5px solid var(--navy);border-radius:8px;padding:22px;transition:transform .3s,box-shadow .3s,border-top-color .3s}
+.card:hover{transform:translateY(-6px);box-shadow:0 18px 36px #0a1f4433;border-top-color:var(--gold)}
+.card h4{font:800 1.15rem/1.2 var(--h);margin:0 0 8px;text-transform:uppercase}.card p{margin:0;color:var(--mut)}.card .k{font:800 .72rem var(--h);color:var(--red);letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;display:block}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));background:var(--navy);border-radius:8px;color:#fff;overflow:hidden;border-bottom:5px solid var(--gold)}
+.stats div{padding:28px 20px;text-align:center;border-right:1px solid #ffffff22}.stats b{display:block;font:900 2.8rem/1 var(--h);color:var(--gold2)}.stats small{color:#c5cfe6}
+.tl{position:relative;margin:10px 0 0 14px;padding-left:30px;border-left:4px solid var(--navy)}
+.tl .it{position:relative;margin-bottom:20px}.tl .it::before{content:"";position:absolute;left:-41px;top:6px;width:18px;height:18px;border-radius:50%;background:var(--gold);border:4px solid var(--navy)}
+.tl .y{font:900 1.4rem var(--h);color:var(--red)}
+.tag{display:inline-block;background:var(--navy);color:#fff;border-radius:5px;padding:3px 12px;font:700 .76rem var(--h);letter-spacing:.5px;margin:3px 4px 3px 0;text-transform:uppercase}.tag.o{background:var(--gold);color:var(--navy)}
+.note{border-left:6px solid var(--gold);background:var(--card);border:1px solid var(--line);border-left:6px solid var(--gold);border-radius:6px;padding:14px 18px;margin:20px 0}
+.bar{display:flex;align-items:center;gap:12px;margin:10px 0;font-size:.92rem}.bar span:first-child{width:110px;flex:none;font-weight:700}.bar span:last-child{width:52px;text-align:right;font-weight:800}
+.bar div{flex:1;background:var(--line);border-radius:4px;height:18px;overflow:hidden}.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--navy2),var(--navy));transition:width 1.4s cubic-bezier(.2,.7,.2,1)}.bar i.e{background:repeating-linear-gradient(135deg,var(--gold),var(--gold) 8px,var(--gold2) 8px,var(--gold2) 16px)}
+.big{font:900 2.6rem/1 var(--h);color:var(--navy2)}
+.logos{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(170px,1fr))}
+.lg{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-height:104px;padding:14px;border-radius:8px;border:1px solid var(--line);background:var(--card);text-align:center;transition:.3s;border-bottom:5px solid var(--c,var(--navy))}
+.lg:hover{transform:translateY(-6px);box-shadow:0 16px 30px #0a1f4433}.em{position:relative;width:58px;height:58px;display:grid;place-items:center;background:var(--c,var(--navy));color:#fff;font:900 .95rem/1 var(--h);letter-spacing:.5px;border-radius:50%;box-shadow:0 6px 14px #0a1f4440;transition:.3s;overflow:hidden}.em.sh{border-radius:6px 6px 50% 50%}.em.sq{border-radius:12px}.em.hx{border-radius:0;clip-path:polygon(25% 5%,75% 5%,100% 50%,75% 95%,25% 95%,0 50%)}.em img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#fff;padding:9px}.lg:hover .em{transform:scale(1.12) rotate(-4deg)}
+.lg b{font:900 1.5rem/1 var(--h);color:var(--c,var(--navy))}.lg small{color:var(--mut);font-size:.74rem;letter-spacing:.5px}
+.sc{overflow-x:auto}table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:8px;overflow:hidden}th{background:var(--navy);color:#fff;font:800 .85rem var(--h);text-transform:uppercase;letter-spacing:1px}th,td{padding:14px 18px;text-align:left;border-bottom:1px solid var(--line)}
+.legal{background:var(--navy);color:#e6ecfa;border-radius:8px;padding:22px 26px;border-left:8px solid var(--gold);font:700 .92rem/1.8 var(--h);letter-spacing:.5px;margin-top:20px}
+footer{background:var(--navy);color:#c5cfe6;text-align:center;padding:34px 18px;font-size:.85rem;border-top:6px solid var(--gold)}footer b{font:900 1.3rem var(--h);text-transform:uppercase;color:#fff;display:block;margin-bottom:6px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style></head><body>
+<div id="prog"></div>
+<header>
+ <div class="top">
+  <div class="logo" id="logo"><img src="jega.png" alt="Logo JEGA" onerror="this.remove();document.getElementById('logo').textContent='JEGA'"></div>
+  <div class="brand">IE Jorge Eliécer Gaitán de Orito<small>Putumayo · Colombia</small></div>
+  <div class="right"><div class="clock"><b id="hh">--:--:--</b><small id="dd">Hora de Colombia</small></div>
+  <a class="fb" href="https://www.facebook.com/Institucioneducativajorgeeliecergaitandeorito" target="_blank" rel="noopener">Facebook</a></div>
+ </div>
+ <nav id="nav"><a href="#inicio">Inicio</a><a href="#nosotros">Nosotros</a><a href="#academica">Oferta académica</a><a href="#sena">SENA</a><a href="#horarios">Horarios</a><a href="#eventos">Eventos</a><a href="#contacto">Contacto</a><a href="#extra">Más información</a><a class="notes" href="https://app.udeki.com/login" target="_blank" rel="noopener">Consulta tus notas</a></nav>
+</header>
+<main>
+
+<section class="page" id="inicio">
+ <div class="band"><div class="k rv">Institución Educativa oficial · Orito, Putumayo</div><h1 class="rv" style="--d:.1s">Una trayectoria que forma futuro</h1><p class="rv" style="--d:.2s">Preescolar, primaria, básica secundaria y media vocacional, con certificación técnica del SENA para nuestros bachilleres.</p>
+ <div class="rv" style="--d:.3s"><a class="btn" href="https://app.udeki.com/login" target="_blank" rel="noopener">Ver mis notas</a><a class="btn g" href="#nosotros">Conoce la institución</a></div></div>
+ <div class="stats rv"><div><b data-n="2004">0</b><small>año de creación (Decreto 001416)</small></div><div><b data-n="1148">0</b><small>estudiantes en 2026</small></div><div><b data-n="3">0</b><small>técnicos SENA</small></div><div style="border:0"><b data-n="12">0</b><small>grados de Transición a 11.º</small></div></div>
+ <h3 class="t rv">Trayectoria</h3>
+ <div class="tl">
+  <div class="it rv"><div class="y">2004</div><b>Reconocimiento oficial.</b> Decreto n.º 001416 del 10 de noviembre de 2004 para ofrecer preescolar, primaria, básica secundaria y media vocacional.</div>
+  <div class="it rv"><div class="y">2018 – 2019</div><b>Vida institucional activa.</b> Desfiles, ferias de proyectos por periodo, campeonatos deportivos y maratón, documentados en el blog del colegio.</div>
+  <div class="it rv"><div class="y">2025</div><b>Prueba Saber 11.</b> 69 estudiantes evaluados y promedios por encima del de Orito en cuatro de las cinco áreas.</div>
+  <div class="it rv"><div class="y">2026</div><b>Promoción con toga.</b> Una generación logra graduarse con toga tras una lucha intensa por su aprobación, y recibe formación técnica certificada por el SENA.</div>
+ </div>
+ <h3 class="t rv">Noticias y apoyos</h3>
+ <div class="grid">
+  <div class="card rv"><span class="k">Apoyo</span><h4>Preicfes de la Gobernación del Putumayo</h4><p>La institución cuenta con el respaldo del preicfes de la Gobernación para preparar el Saber 11.</p></div>
+  <div class="card rv" style="--d:.08s"><span class="k">Apoyo</span><h4>Preicfes Orientem y Milton Ochoa</h4><p>Preparación adicional para la prueba de Estado de nuestros estudiantes de grado once.</p></div>
+  <div class="card rv" style="--d:.16s"><span class="k">Alianza</span><h4>SENA</h4><p>Articulación desde décimo con certificado técnico y diploma de bachiller en la graduación.</p></div>
+  <div class="card rv" style="--d:.24s"><span class="k">Visitas</span><h4>Universidades en el colegio</h4><p>Universidades nacionales e internacionales visitan la institución para invitar a nuestros bachilleres.</p></div>
+ </div>
+ </section>
+
+<section class="page" id="nosotros">
+ <div class="band"><div class="k rv">Quiénes somos</div><h2 class="rv" style="--d:.1s">Nosotros</h2><p class="rv" style="--d:.2s">Conoce dónde estamos, cómo contactarnos y lo esencial de nuestra institución.</p></div>
+ <div class="grid">
+  <div class="card rv"><span class="k">Ubicación</span><h4>Barrio Las Palmas</h4><p>Carrera 2 n.º 1-25-49, Orito, Putumayo.</p><a class="btn d" href="https://www.google.com/maps/place/Colegio+Jorge+Eliecer+Gaitan/@0.6557075,-76.8612578,90m/data=!3m1!1e3!4m6!3m5!1s0x8e28f4834581f7b3:0x4ace282f7f25690b!8m2!3d0.6555952!4d-76.86129!16s%2Fg%2F11c52h3nlh!5m1!1e1" target="_blank" rel="noopener">Ver en Maps</a></div>
+  <div class="card rv" style="--d:.08s"><span class="k">Contacto</span><h4>Teléfonos</h4><p><a href="tel:+576084292388">608 429 2388</a><br><a href="tel:4290657">429 0657</a></p></div>
+  <div class="card rv" style="--d:.16s"><span class="k">Correo</span><h4>Institucional</h4><p><a href="mailto:jegaaitanorito@sedputumayo.gov.co">jegaaitanorito@sedputumayo.gov.co</a></p></div>
+ </div>
+ <h3 class="t rv">Conocimiento previo</h3>
+ <div class="grid">
+  <div class="card rv"><h4>Naturaleza</h4><p>Institución Educativa oficial, mixta, urbana, de carácter académico, calendario A, bajo la Secretaría de Educación de Putumayo.</p></div>
+  <div class="card rv" style="--d:.08s"><h4>Modelos</h4><span class="tag">Tradicional</span><span class="tag">Aceleración</span><span class="tag">A Crecer</span><span class="tag">Jóvenes y adultos</span></div>
+  <div class="card rv" style="--d:.16s"><h4>Niveles</h4><p>Preescolar, básica primaria, básica secundaria y media vocacional.</p></div>
+ </div>
+</section>
+
+<section class="page" id="academica">
+ <div class="band"><div class="k rv">Formación</div><h2 class="rv" style="--d:.1s">Oferta académica</h2><p class="rv" style="--d:.2s">Una comunidad que crece: así ha evolucionado la matrícula y hacia dónde vamos.</p></div>
+ <div class="grid">
+  <div class="card rv"><span class="k">2025</span><div class="big" data-n="1064">0</div><p>estudiantes matriculados</p></div>
+  <div class="card rv" style="--d:.08s"><span class="k">2026</span><div class="big" data-n="1148">0</div><p>estudiantes matriculados (corte agosto)</p></div>
+  <div class="card rv" style="--d:.16s"><span class="k">2027 · estimado</span><div class="big" data-n="1239">0</div><p>proyección probable</p></div>
+ </div>
+ <h3 class="t rv">Proyección 2027</h3>
+ <div class="card rv" id="proy"></div>
+ <div class="note rv"><b>Premonición.</b> Al conocerse que la promoción 2026 logró graduarse con toga tras una lucha intensa, más familias confiarán en la institución. Con un crecimiento similar al de 2025 a 2026 (7,9 %) llegaríamos a unos 1.239 estudiantes; un escenario prudente (+5 %) daría 1.205 y uno optimista (+10 %), 1.263. Son estimaciones, no cifras oficiales.</div>
+ <h3 class="t rv">Estudiantes por grado · 2026</h3>
+ <div class="card rv" id="bars"></div>
+ <p class="rv" style="color:var(--mut);font-size:.85rem">Fuente: SIMAT vía MIAcademia. La aceleración del aprendizaje suma 21 estudiantes.</p>
+</section>
+
+<section class="page" id="sena">
+ <div class="band"><div class="k rv">Alianza SENA</div><h2 class="rv" style="--d:.1s">Bachiller y técnico</h2><p class="rv" style="--d:.2s">Inicias en décimo, continúas en once y el día del grado recibes el diploma y el certificado técnico.</p></div>
+ <h3 class="t rv">Técnicos de 2026</h3>
+ <div class="grid">
+  <div class="card rv"><span class="k">Técnico</span><h4>Ambiental</h4><p>Cuidado y gestión de los recursos naturales.</p></div>
+  <div class="card rv" style="--d:.08s"><span class="k">Técnico</span><h4>Sistemas</h4><p>Informática, equipos y software.</p></div>
+  <div class="card rv" style="--d:.16s"><span class="k">Técnico</span><h4>Contenidos</h4><p>Producción de contenidos digitales.</p></div>
+ </div>
+ <h3 class="t rv">Posibles técnicos para sumar en Orito</h3>
+ <div class="card rv"><p>El SENA ofrece programas técnicos en Putumayo que podrían integrarse a la institución. Estas son ideas a explorar con el SENA según la vocación de la región:</p><p style="margin-top:10px"><span class="tag o">Agropecuario</span><span class="tag o">Agroindustria</span><span class="tag o">Operación petrolera</span><span class="tag o">Cocina</span><span class="tag o">Seguridad y salud en el trabajo</span><span class="tag o">Contabilidad y finanzas</span></p></div>
+ <div class="note rv">Sujetas a confirmación: dependen de la oferta vigente del SENA en Orito y de la decisión del colegio. Consulta la oferta real en <a href="https://www.senasofiaplus.edu.co/" target="_blank" rel="noopener"><span class="em sq">S+<img alt="" loading="lazy" referrerpolicy="no-referrer" src="https://www.google.com/s2/favicons?domain=senasofiaplus.edu.co&sz=128" onerror="this.remove()"></span><b>Sofía Plus</b></a>.</div>
+</section>
+
+<section class="page" id="horarios">
+ <div class="band"><div class="k rv">Tiempos</div><h2 class="rv" style="--d:.1s">Horarios</h2><p class="rv" style="--d:.2s">Jornada única de la mañana. Ya no se dictan clases en la tarde.</p></div>
+ <div class="grid">
+  <div class="card rv"><span class="k">Academia</span><h4>Horario de clases</h4><div class="big">6:30 AM – 2:00 PM</div><p style="margin-top:6px">Lunes a viernes</p></div>
+  <div class="card rv" style="--d:.1s"><span class="k">Público y escolar</span><h4>Horario de atención</h4><div class="big">7:00 AM – 3:30 PM</div><p style="margin-top:6px">Lunes a viernes · secretaría, rectoría y coordinación</p></div>
+ </div>
+ <h3 class="t rv">Resumen semanal</h3>
+ <div class="sc rv"><table><tr><th>Día</th><th>Clases</th><th>Atención</th></tr>
+ <tr><td>Lunes a viernes</td><td>6:30 AM – 2:00 PM</td><td>7:00 AM – 3:30 PM</td></tr>
+ <tr><td>Sábado y domingo</td><td>Sin clases</td><td>Sin atención</td></tr></table></div>
+</section>
+
+<section class="page" id="eventos">
+ <div class="band"><div class="k rv">Vida institucional</div><h2 class="rv" style="--d:.1s">Eventos</h2><p class="rv" style="--d:.2s">Cultura, ciencia, idiomas y deporte durante todo el año escolar.</p></div>
+ <div class="grid">
+  <div class="card rv"><span class="k">Idiomas</span><h4>English Day</h4><p>Jornada para practicar y celebrar el inglés con actividades de toda la comunidad.</p></div>
+  <div class="card rv" style="--d:.06s"><span class="k">Cultura</span><h4>Día de la Raza</h4><p>Reflexión y actos culturales sobre nuestra diversidad e identidad.</p></div>
+  <div class="card rv" style="--d:.12s"><span class="k">Cultura</span><h4>Día de la Afrocolombianidad</h4><p>Reconocimiento al aporte afrodescendiente con música, danza y muestras.</p></div>
+  <div class="card rv" style="--d:.18s"><span class="k">Lengua</span><h4>Día del Idioma</h4><p>Lectura, poesía y concursos para celebrar el español.</p></div>
+  <div class="card rv" style="--d:.24s"><span class="k">Ciencia</span><h4>Feria de Innovación</h4><p>Los estudiantes presentan ideas y prototipos creativos.</p></div>
+  <div class="card rv" style="--d:.3s"><span class="k">Proyectos</span><h4>Feria de Proyectos</h4><p>Exposición de los proyectos de aula de cada periodo.</p></div>
+  <div class="card rv" style="--d:.36s"><span class="k">Matemáticas</span><h4>Olimpiadas Matemáticas</h4><p>Competencia para fortalecer el razonamiento lógico.</p></div>
+  <div class="card rv" style="--d:.42s"><span class="k">Deporte</span><h4>Maratón de 5 km</h4><p>Carrera institucional de 5 kilómetros con premiación a los mejores atletas.</p></div>
+ </div>
+ <a class="btn d rv" href="https://jegaoritoinstitucional.blogspot.com/" target="_blank" rel="noopener">Ver blog institucional</a>
+</section>
+
+<section class="page" id="contacto">
+ <div class="band"><div class="k rv">Escríbenos</div><h2 class="rv" style="--d:.1s">Contacto</h2><p class="rv" style="--d:.2s">Estamos en el Barrio Las Palmas de Orito, Putumayo.</p></div>
+ <div class="grid">
+  <div class="card rv"><span class="k">Dónde estamos</span><h4>Ubicación</h4><p>Carrera 2 n.º 1-25-49, Barrio Las Palmas, Orito, Putumayo.</p><a class="btn d" href="https://www.google.com/maps/place/Colegio+Jorge+Eliecer+Gaitan/@0.6557075,-76.8612578,90m/data=!3m1!1e3!4m6!3m5!1s0x8e28f4834581f7b3:0x4ace282f7f25690b!8m2!3d0.6555952!4d-76.86129!16s%2Fg%2F11c52h3nlh!5m1!1e1" target="_blank" rel="noopener">Abrir Google Maps</a></div>
+  <div class="card rv" style="--d:.08s"><span class="k">Atención</span><h4>Horarios</h4><p>Lunes a viernes, 7:00 AM – 3:30 PM.<br>Clases: 6:30 AM – 2:00 PM.</p></div>
+  <div class="card rv" style="--d:.16s"><span class="k">Comunícate</span><h4>Teléfono y fax</h4><p><a href="tel:+576084292388">608 429 2388</a> · <a href="tel:4290657">429 0657</a><br>Fax: por confirmar</p></div>
+  <div class="card rv" style="--d:.24s"><span class="k">Correo</span><h4>Institucional</h4><p><a href="mailto:jegaaitanorito@sedputumayo.gov.co">jegaaitanorito@sedputumayo.gov.co</a></p></div>
+ </div>
+ <div class="legal rv">INSTITUCIÓN EDUCATIVA DE PRE-ESCOLAR, PRIMARIA, BÁSICA SECUNDARIA Y MEDIA VOCACIONAL<br>DECRETO NO. 001416 DE 10 DE NOVIEMBRE DE 2004<br>NIT. 846-002-699-6 · DANE 186320000528</div>
+</section>
+
+<section class="page" id="extra">
+ <div class="band"><div class="k rv">Aliados</div><h2 class="rv" style="--d:.1s">Más información</h2><p class="rv" style="--d:.2s">Plataformas, universidades y programas que acompañan a nuestros estudiantes.</p></div>
+ <h3 class="t rv">Plataformas y la institución</h3>
+ <div class="logos">
+  <a class="lg rv" style="--c:#39a900" href="https://bogota.gov.co/sites/default/files/inline-images/logosena.png" target="_blank" rel="noopener"><span class="em ">SENA<img alt="" loading="lazy" referrerpolicy="no-referrer" src="https://bogota.gov.co/sites/default/files/inline-images/logosena.png" onerror="this.remove()"></span><b>SENA</b><small>sena.edu.co</small></a>
+  <a class="lg rv" style="--c:#ff6a00;--d:.08s" href="https://www.senasofiaplus.edu.co/" target="_blank" rel="noopener"><span class="em ">SENA<img alt="" loading="lazy" referrerpolicy="no-referrer" src="https://sofia-plus-remake.vercel.app/static/media/SFLogoL.170413f4f46b22e5561e.png" onerror="this.remove()"></span><b>Sofía Plus</b><small>senasofiaplus.edu.co</small></a>
+  <a class="lg rv" style="--c:#0a1f4400;--d:.16s" href="#inicio"><span class="em" id="lg2"><img src="jega.png" alt="" onerror="this.remove();document.getElementById('lg2').textContent=''"></span><span class="em ">IEJEGA<img alt="" loading="lazy" referrerpolicy="no-referrer" src="https://scontent.fvgz1-1.fna.fbcdn.net/v/t39.30808-6/911551807_1726523939482950_9195487787378777304_n.avif?stp=dst-jpg_tt6&cstp=mx2048x1365&ctp=s2048x1365&_nc_cat=106&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeHtbDwdlJNdvLln3nxvfq9W_jAWexsext_-MBZ7Gx7G3-avAWBGnoGvvlWB2EfbLUXAGdKQ1AjgH13tcmD_RMS1&_nc_ohc=7q_LIKF6CtQQ7kNvwEhlbC1&_nc_oc=Ado9N24ia-FRKMR9FcTVFX_1wPWUf3Xv27tTqdOkx9G2_mH7VfaQAltoZfa0ljPTy0E&_nc_zt=23&_nc_ht=scontent.fvgz1-1.fna&_nc_gid=OJDPLehFqNGcI2yOvp9lbA&_nc_ss=7b3a8&oh=00_AQTfpFJr9bToRfCdoXcvia-RAcnQOOwQEqUbflZtD1jkdg&oe=6B0AACE6" onerror="this.remove()"></span><b>JEGA</b><small>IE Jorge Eliécer Gaitán</small></a>
+ </div>
+ <h3 class="t rv">Universidades que nos han visitado</h3>
+ <div class="logos">
+  <a class="lg rv" style="--c:#ffc107" href="https://www.uniandes.edu.co/" target="_blank" rel="noopener"><span class="em sq">UA<img alt="" loading="lazy" referrerpolicy="no-referrer" src="https://www.google.com/s2/favicons?domain=uniandes.edu.co&sz=128" onerror="this.remove()"></span><b>Uniandes</b><small>Universidad de los Andes</small></a>
+  <a class="lg rv" style="--c:#a51c30;--d:.06s" href="https://www.harvard.edu/" target="_blank" rel="noopener"><span class="em sh">H<img alt="" loading="lazy" referrerpolicy="no-referrer" src="https://www.google.com/s2/favicons?domain=harvard.edu&sz=128" onerror="this.remove()"></span><b>Harvard</b><small>Harvard University</small></a>
+  <a class="lg rv" style="--c:#0072bc;--d:.12s" href="https://www.unad.edu.co/" target="_blank" rel="noopener"><span class="em ">UNAD<img alt="" loading="lazy" referrerpolicy="no-referrer" src="https://www.google.com/s2/favicons?domain=unad.edu.co&sz=128" onerror="this.remove()"></span><b>UNAD</b><small>unad.edu.co</small></a>
+  <a class="lg rv" style="--c:#1b7f3b;--d:.18s" href="https://www.uniputumayo.edu.co/" target="_blank" rel="noopener"><span class="em hx">UP<img alt="" loading="lazy" referrerpolicy="no-referrer" src="https://i0.wp.com/itp.edu.co/ITP2022/wp-content/uploads/2026/03/Logo-UNIPUTUMAYO-500px-x-500px-01.png?fit=2083%2C2083&ssl=1" onerror="this.remove()"></span><b>Uniputumayo</b><small>Institución Universitaria del Putumayo</small></a>
+  <a class="lg rv" style="--c:#c8102e;--d:.24s" href="https://www.uan.edu.co/" target="_blank" rel="noopener"><span class="em sh">UAN<img alt="" loading="lazy" referrerpolicy="no-referrer" src="https://www.google.com/s2/favicons?domain=uan.edu.co&sz=128" onerror="this.remove()"></span><b>UAN</b><small>Universidad Antonio Nariño</small></a>
+ </div>
+ <h3 class="t rv">Apoyo para el Saber 11</h3>
+ <div class="logos">
+  <a class="lg rv" style="--c:#1d7a3d" href="https://www.putumayo.gov.co/" target="_blank" rel="noopener"><span class="em hx">GP<img alt="" loading="lazy" referrerpolicy="no-referrer" src="https://www.google.com/s2/favicons?domain=putumayo.gov.co&sz=128" onerror="this.remove()"></span><b>Gobernación</b><small>Preicfes · Putumayo</small></a>
+  <a class="lg rv" style="--c:#6a1b9a;--d:.08s" href="https://www.orientem.com.co" target="_blank" rel="noopener"><span class="em ">ORIENTEM<img alt="" loading="lazy" referrerpolicy="no-referrer" src="https://www.orientem.com.co/wp/wp-content/uploads/2023/01/Logo-color.png" onerror="this.remove()"></span><b>Orientem</b><small>Preicfes</small></a>
+  <a class="lg rv" style="--c:#e65100;--d:.16s" href="#" target="_blank" rel="noopener"><span class="em ">MILTON OCHOA<img alt="" loading="lazy" referrerpolicy="no-referrer" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeXVd0lWArxpH8T0uqLTVmG7b9FpgU0wiaGnlA1KSj8xTDrOM-bSCLqECz&s=10" onerror="this.remove()"></span><b>Milton Ochoa</b><small>Preicfes</small></a>
+ </div>
+</section>
+</main>
+<footer><b>IE Jorge Eliécer Gaitán de Orito</b>Barrio Las Palmas · Orito, Putumayo · NIT 846-002-699-6 · DANE 186320000528</footer>
+<script>
+(function(){
+ var pages=['inicio','nosotros','academica','sena','horarios','eventos','contacto','extra'],io;
+ var g=[['Transición',61],['1.º',80],['2.º',78],['3.º',65],['4.º',66],['5.º',68],['6.º',168],['7.º',156],['8.º',132],['9.º',96],['10.º',100],['11.º',57]];
+ function bars(l,m,c){return l.map(function(x){return '<div class="bar"><span>'+x[0]+'</span><div><i class="'+(x[2]||'')+'" data-w="'+Math.round(x[1]/m*100)+'"></i></div><span>'+x[1].toLocaleString('es-CO')+'</span></div>'}).join('')}
+ document.getElementById('bars').innerHTML=bars(g,168);
+ document.getElementById('proy').innerHTML=bars([['2025',1064],['2026',1148],['2027 est.',1239,'e']],1300);
+ function count(el){var n=+el.dataset.n,t=0;(function s(){t+=Math.max(1,n/50);if(t>=n){el.textContent=el.dataset.n==='2004'?'2004':n.toLocaleString('es-CO');return}el.textContent=Math.floor(t).toLocaleString('es-CO');requestAnimationFrame(s)})()}
+ try{io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;var t=e.target;t.classList.add('in');t.querySelectorAll('[data-w]').forEach(function(i){i.style.width=i.dataset.w+'%'});t.querySelectorAll('[data-n]').forEach(count);if(t.dataset.n)count(t);io.unobserve(t)})},{threshold:.15})}catch(x){io=null}
+ function route(){var h=(location.hash||'#inicio').slice(1);if(pages.indexOf(h)<0)h='inicio';
+  pages.forEach(function(p){document.getElementById(p).classList.toggle('on',p===h)});
+  document.querySelectorAll('#nav a:not(.notes)').forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+h)});
+  window.scrollTo({top:0});
+  document.querySelectorAll('#'+h+' [data-w]').forEach(function(i){i.style.width='0'});
+  document.querySelectorAll('#'+h+' .rv').forEach(function(e){e.classList.remove('in');if(io)io.observe(e);else e.classList.add('in')});
+  if(!io)document.querySelectorAll('#'+h+' [data-w]').forEach(function(i){i.style.width=i.dataset.w+'%'})}
+ window.addEventListener('hashchange',route);route();
+ window.addEventListener('scroll',function(){var d=document.documentElement;document.getElementById('prog').style.width=(d.scrollTop/(d.scrollHeight-d.clientHeight||1)*100)+'%'},{passive:true});
+ function tick(){var d=new Date();
+  document.getElementById('hh').textContent=d.toLocaleTimeString('es-CO',{timeZone:'America/Bogota',hour12:true});
+  document.getElementById('dd').textContent=d.toLocaleDateString('es-CO',{timeZone:'America/Bogota',weekday:'short',day:'numeric',month:'short'})+' · Hora de Colombia'}
+ tick();setInterval(tick,1000);
+})();
+</script></body></html>

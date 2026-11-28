@@ -1,3 +1,3 @@
 git add .
-git commit -m "Update info 26/11/26"
+git commit -m "Actualizacion de pagina de reemplazo"
 git push origin main
